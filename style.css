@@ -1,4 +1,4 @@
-/* Basic reset */
+/* Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,7 +7,6 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* Full-page background image */
   background: url('Animal-img/pexels-umkreisel-app-1459534.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #fff;
@@ -19,27 +18,28 @@ body {
 }
 
 /* Headings */
-h1 {
+h1, h2 {
   text-align: center;
-  font-size: 2.8rem;
-  margin-bottom: 30px;
-  color: #ffeb3b;
   text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
 
-h2 {
-  font-size: 2rem;
-  margin: 20px 0 15px;
-  color: #00e5ff;
-  text-align: center;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem); /* auto-scaling font */
+  margin-bottom: 30px;
+  color: #ffeb3b;
 }
 
-/* Grid containers */
+h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  margin: 20px 0 15px;
+  color: #00e5ff;
+}
+
+/* Responsive grid containers */
 .Animal,
 .bird {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 20px;
   width: 100%;
   max-width: 1200px;
@@ -47,7 +47,7 @@ h2 {
 
 /* Each card */
 .ani, .bir {
-  background: rgba(255, 255, 255, 0.1); /* translucent card */
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   overflow: hidden;
   text-align: center;
@@ -55,37 +55,35 @@ h2 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
   cursor: pointer;
-  position: relative;
-  color: #fff;
   backdrop-filter: blur(8px);
 }
 
 .ani:hover, .bir:hover {
-  transform: translateY(-8px) scale(1.05);
+  transform: translateY(-5px) scale(1.03);
   box-shadow: 0 12px 25px rgba(0,0,0,0.6);
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* Images */
+/* Images scale with card */
 .ani img, .bir img {
   width: 100%;
-  height: 150px;
-  object-fit: cover;
+  height: auto;          /* allow natural height */
+  object-fit: contain;   /* show whole image */
   border-radius: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .ani:hover img, .bir:hover img {
-  transform: scale(1.08) rotate(1deg);
+  transform: scale(1.08);
   box-shadow: 0 6px 15px rgba(0,0,0,0.5);
 }
 
-/* Name below image */
+/* Text below image */
 .ani span, .bir span {
   display: block;
   margin-top: 8px;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
   color: #fff;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
@@ -100,18 +98,4 @@ h2 {
   0% { transform: scale(1.05); box-shadow: 0 0 15px rgba(255,235,59,0.5); }
   50% { transform: scale(1.1); box-shadow: 0 0 25px rgba(255,235,59,0.7); }
   100% { transform: scale(1.05); box-shadow: 0 0 15px rgba(255,235,59,0.5); }
-}
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  h1 { font-size: 2.2rem; }
-  h2 { font-size: 1.6rem; }
-  .ani img, .bir img { height: 120px; }
-}
-
-@media (max-width: 480px) {
-  h1 { font-size: 1.8rem; }
-  h2 { font-size: 1.4rem; }
-  .ani img, .bir img { height: 100px; }
-  .ani span, .bir span { font-size: 0.95rem; }
 }

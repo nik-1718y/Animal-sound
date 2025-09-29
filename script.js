@@ -20,7 +20,7 @@ function playSound(key) {
       src = "animal-sound/010467_red-fox-calls-at-night-59627.mp3";
       break;
     case "horse":
-      src = "animal-sound/010467_red-fox-calls-at-night-59627.mp3";
+      src = "animal-sound\horse-neigh-390297.mp3";
       break;
     case "bear":
       src = "animal-sound/bear-191995.mp3";
